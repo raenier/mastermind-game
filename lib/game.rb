@@ -23,9 +23,13 @@ class Game
       self.game_sets = gets.chomp.to_i
     end
 
-    #sets who is codemaker and codebreaker
+    game_set_for(game_sets)
+  end
+
+  def game_set_for(set_number)
+    #sets who is codemaker and codebreaker for each set
     players = [computer, human]
-    game_sets.times do |index|
+    set_number.times do |index|
       start_set(index, *(index.odd? ? players.reverse : players))
     end
   end

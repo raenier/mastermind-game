@@ -18,8 +18,8 @@ class Game
     return if gets.chomp.downcase != "y"
 
     #how many sets will be played
-    while self.game_sets.to_i.odd?
-      p 'Pick how many set of game, must be even number: '
+    while self.game_sets.to_i.odd? || self.game_sets.to_i > 20
+      p 'Pick how many set of game, must be even number & less than 20 games: '
       self.game_sets = gets.chomp.to_i
     end
 

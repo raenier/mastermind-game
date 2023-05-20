@@ -24,6 +24,7 @@ class Game
     end
 
     game_set_for(game_sets)
+    announce_winner
   end
 
   def game_set_for(set_number)
@@ -69,5 +70,15 @@ class Game
 
   def solved_by?(codebreaker)
     codebreaker.feedback_code.uniq == [2]
+  end
+
+  def announce_winner
+    if human.score > computer.score
+      p "Mankind won the fierce battle of the MIND"
+    elsif computer.score > human.score
+      p "AI won the battle you bastard, you let Mankind down"
+    else
+      puts "For now the word rest, as Machine and Mankind\n is of the same level in terms of thinking capacity"
+    end
   end
 end

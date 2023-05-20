@@ -48,7 +48,7 @@ class Game
     end
     #score
     solved_by?(codebreaker) ? codebreaker.score += 1 : codemaker.score += 1
-    p "MANKIND: #{human.score}"
+    puts "\nMANKIND: #{human.score}"
     p "AI: #{computer.score}"
   end
 

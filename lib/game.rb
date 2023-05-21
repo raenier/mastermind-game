@@ -55,15 +55,24 @@ class Game
   def validate_guest(solution=[])
     return if solution.empty?
     return [2, 2, 2, 2] if code == solution
-
+    inclusion = code.clone
     #compare currentcode  vs solution
+    #return feedback for correct ones with correct position
+    res =
     code.map.with_index do |code_part, index|
       if code_part == solution[index]
+        inclusion.delete_at(inclusion.index(solution[index]) || inclusion.length)
         2 # correct
-      elsif code.include? solution[index]
+      end
+    end
+    #return feedback for correct code but wrong position
+    res.map.with_index do |fb, index|
+      next 2 if fb == 2
+      if inclusion.include?(solution[index])
+        inclusion.delete_at(inclusion.index(solution[index]) || inclusion.length)
         1 # correct wrong position
       else
-        0 # not part of cnode
+        0
       end
     end
   end
